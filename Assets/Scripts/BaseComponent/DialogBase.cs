@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using MVP_base.Interface;
+using System.Threading.Tasks;
 
 namespace MVP_base.Component
 {
@@ -22,7 +23,25 @@ namespace MVP_base.Component
 
             body.SetActive(true);
 
+            m_submitButton.onClick.AddListener(() =>
+            {
+                Submit();
+            });
+            m_cancelButton.onClick.AddListener(Close());
+        }
 
+        public virtual Task<bool> Close()
+        {
+            body.SetActive(false);
+
+            return Task.FromResult(false);
+        }
+
+        public virtual Task<bool> Submit()
+        {
+            Close();
+
+            return Task.FromResult(true);
         }
     }
 }
