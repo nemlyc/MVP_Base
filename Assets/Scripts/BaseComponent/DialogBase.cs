@@ -2,46 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using MVP_base.Interface;
-using System.Threading.Tasks;
+using System;
+using UnityEngine.EventSystems;
 
 namespace MVP_base.Component
 {
-    public class DialogBase : MonoBehaviour, IDialog
+    [RequireComponent(typeof(CanvasGroup))]
+    public class DialogBase : ClosableView, IDialog
     {
         [SerializeField]
         Button m_submitButton, m_cancelButton;
         [SerializeField]
-        GameObject body;
+        bool OnStartVisible = false;
+        [SerializeField]
+        GameObject _panel;
 
-        IWindow parent;
-
-        public virtual void Open(IWindow parent)
+        public virtual void Open(Action submitAction, Action cancelAction = null)
         {
-            this.parent = parent;
-
-            body.SetActive(true);
+            base.EnableCanvas();
 
             m_submitButton.onClick.AddListener(() =>
             {
-                Submit();
+                submitAction.Invoke();
             });
-            m_cancelButton.onClick.AddListener(Close());
+            m_cancelButton.onClick.AddListener(() =>
+            {
+                if (cancelAction != null)
+                {
+                    cancelAction.Invoke();
+                }
+                Close();
+            });
         }
 
-        public virtual Task<bool> Close()
+        public virtual void Close()
         {
-            body.SetActive(false);
-
-            return Task.FromResult(false);
+            base.DisableCanvas();
         }
 
-        public virtual Task<bool> Submit()
+        private void Start()
         {
-            Close();
-
-            return Task.FromResult(true);
+            if (!OnStartVisible)
+            {
+                base.DisableCanvas();
+            }
+            else
+            {
+                base.EnableCanvas();
+            }
         }
     }
 }

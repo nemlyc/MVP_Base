@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace MVP_base.Interface
         /// </summary>
         /// <param name="content">Result text</param>
         /// <returns>Response, means "OK" or "No".</returns>
-        public void Open(IWindow parent);
+        public void Open(Action submitAction, Action cancelAction = null);
         public void Close();
     }
 }
