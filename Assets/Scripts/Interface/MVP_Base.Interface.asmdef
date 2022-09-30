@@ -1,0 +1,14 @@
+{
+    "name": "MVP_Base.Interface",
+    "rootNamespace": "MVP_Base.Interface",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
