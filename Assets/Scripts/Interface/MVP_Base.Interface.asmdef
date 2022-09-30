@@ -1,6 +1,6 @@
 {
-    "name": "MVP_Base.Interface",
-    "rootNamespace": "MVP_Base.Interface",
+    "name": "MVP_base.Interface",
+    "rootNamespace": "MVP_base.Interface",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
