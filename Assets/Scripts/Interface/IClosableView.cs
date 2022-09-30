@@ -6,7 +6,8 @@ namespace MVP_base.Interface
 {
     public interface IClosableView
     {
-        void EnableCanvas();
-        void DisableCanvas();
+        void Open();
+        void Close();
+        void SetParent(IIndexedViewManager viewManager);
     }
 }

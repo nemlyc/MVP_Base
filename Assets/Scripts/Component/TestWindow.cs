@@ -10,16 +10,23 @@ namespace MVP_base.Component
         UnityEngine.UI.Button button;
 
         [SerializeField]
-        DialogBase dialog;
+        PromptDialog dialog, dialog2, dialog3;
+
+        [SerializeField]
+        IndexedViewManager indexed;
+
+        private void Awake()
+        {
+            indexed.AddView(dialog, indexed);
+            indexed.AddView(dialog2, indexed);
+            indexed.AddView(dialog3, indexed);
+        }
 
         private void Start()
         {
             button.onClick.AddListener(() =>
             {
-                dialog.Open(() =>
-                {
-                    Debug.Log("Close");
-                });
+                indexed.ShowView(0);
             });
         }
     }
