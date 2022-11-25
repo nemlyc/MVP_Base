@@ -45,24 +45,23 @@ namespace MVP_base.Component
 
         public void NextView()
         {
-            _localIndex += 1;
-            if (_view.Count <= _localIndex)
+            var next = _localIndex + 1;            
+            if (_view.Count <= next)
             {
-                _localIndex = 0;
+                next = 0;
             }
-            ShowView(_localIndex);
+            ShowView(next);
         }
 
         public void PreviousView()
         {
-            _localIndex -= 1;
-
-            if (_localIndex < 0)
+            var last = _localIndex - 1;
+            if (last < 0)
             {
-                _localIndex = _view.Count - 1;
+                last = _view.Count - 1;
             }
 
-            ShowView(_localIndex);
+            ShowView(last);
         }
 
         public void BackView()
