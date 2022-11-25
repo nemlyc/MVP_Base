@@ -1,0 +1,7 @@
+{
+    "name": "com.nemlyc.mvp_base",
+    "version": "0.1.0",
+    "displayName": "MVP_base",
+    "description": "base components",
+    "unity": "2021.3"
+  }
